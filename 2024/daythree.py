@@ -20,7 +20,7 @@ def multiplyMatches1(line):
     results = []
     for match in matches:
         print(match)
-        num1, num2 = map(int, match)  # Convert matched strings to integers
+        num1, num2 = map(int, match)  
         results.append(num1 * num2)
     
     return sum(results)
@@ -43,16 +43,15 @@ def multiplyMatches2(line):
 
     multiplications = []
     
-    # Traverse the matches
-    previous_type = "do"  # Keep track of the last encountered match type
+    previous_type = "do"  
     for match in matches:
         if match.group(0) == "do()":
             previous_type = "do"
         elif match.group(0) == "don't()":
             previous_type = "don't"
-        elif match.group(1) and match.group(2):  # It's a mul(X,Y)
+        elif match.group(1) and match.group(2):  
             x, y = int(match.group(1)), int(match.group(2))
-            if previous_type == "do":  # Check if it follows a do()
+            if previous_type == "do":  
                 multiplications.append((x * y))
     return sum(multiplications)
     
